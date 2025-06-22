@@ -1,4 +1,0 @@
-echo "triggered scan on $(date)" > .mend-trigger
-git add .mend-trigger
-git commit -m "chore: trigger Mend scan"
-git push
