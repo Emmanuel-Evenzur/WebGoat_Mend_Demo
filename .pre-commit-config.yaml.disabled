@@ -1,7 +1,7 @@
-ci:
+#3ci:
   autofix_commit_msg: |
     [pre-commit.ci] auto fixes from pre-commit.com hooks
-  autofix_prs: false # managed in the action step
+  autofix_prs: false # managed in the action step3#ee
   autoupdate_branch: ""
   autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
   autoupdate_schedule: weekly
