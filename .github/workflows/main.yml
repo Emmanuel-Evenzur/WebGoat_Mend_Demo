@@ -1,4 +1,4 @@
-# Name of your GitHub Actions Workflow 
+# Name of your GitHub Actions Workflow top
 name: Mend Security Scan
 
 # Triggers for the workflow
