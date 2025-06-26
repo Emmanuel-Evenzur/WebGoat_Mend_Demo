@@ -1,5 +1,5 @@
-# Name of your GitHub Actions Workflow topito
-name: Mend Security Scan
+# Name of your GitHub Actions Workflow first 
+name: Mend Security Scan 
 
 # Triggers for the workflow
 on:
