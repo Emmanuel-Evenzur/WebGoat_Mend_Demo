@@ -46,7 +46,7 @@ jobs:
         env:
           # Securely map GitHub secrets to environment variables
           MEND_USER_KEY: ${{ secrets.MEND_USER_KEY }}
-          MEND_EMAIL: emmanuel.evenzur@mend.io # <-- TODO: UPDATE YOUR EMAIL HERE
+          MEND_EMAIL: ${{ env.EMAIL }} # <-- TODO: UPDATE YOUR EMAIL HERE
           MEND_URL: https://saas-eu.mend.io
         run: |
           # Define the scope for Mend
