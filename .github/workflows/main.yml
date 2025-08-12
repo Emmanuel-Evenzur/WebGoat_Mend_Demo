@@ -20,7 +20,7 @@ jobs:
 
       # Step 1: Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Step 2: Sets up a JDK environment (Correction for Java version)
       - name: Set up JDK 23
