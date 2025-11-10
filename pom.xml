@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.4.4</version>
+    <version>3.5.6</version>
   </parent>
 
   <groupId>org.owasp.webgoat</groupId>
@@ -68,16 +68,16 @@
     <!-- do not update necessary for lesson -->
     <checkstyle.version>3.6.0</checkstyle.version>
     <commons-collections.version>3.2.1</commons-collections.version>
-    <commons-compress.version>1.27.1</commons-compress.version>
-    <commons-io.version>2.19.0</commons-io.version>
+    <commons-compress.version>1.28.0</commons-compress.version>
+    <commons-io.version>2.20.0</commons-io.version>
     <commons-lang3.version>3.14.0</commons-lang3.version>
-    <commons-text.version>1.13.1</commons-text.version>
-    <guava.version>33.4.8-jre</guava.version>
+    <commons-text.version>1.14.0</commons-text.version>
+    <guava.version>33.5.0-jre</guava.version>
     <jacoco.version>0.8.11</jacoco.version>
-    <java.version>23</java.version>
+    <java.version>25</java.version>
     <jaxb.version>2.3.1</jaxb.version>
     <jjwt.version>0.9.1</jjwt.version>
-    <jose4j.version>0.9.4</jose4j.version>
+    <jose4j.version>0.9.3</jose4j.version>
     <jquery.version>3.7.1</jquery.version>
     <jsoup.version>1.19.1</jsoup.version>
     <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
@@ -85,10 +85,10 @@
     <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
     <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
     <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
-    <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
     <maven.compiler.proc>full</maven.compiler.proc>
-    <maven.compiler.source>23</maven.compiler.source>
-    <maven.compiler.target>23</maven.compiler.target>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <pmd.version>3.15.0</pmd.version>
     <!-- Use UTF-8 Encoding -->
@@ -96,37 +96,26 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
     <waittimeForServerStart>60</waittimeForServerStart>
-    <webdriver.version>6.0.1</webdriver.version>
+    <webdriver.version>6.3.2</webdriver.version>
     <webgoat.context>/WebGoat</webgoat.context>
     <webgoat.port>8080</webgoat.port>
     <webgoat.sslenabled>false</webgoat.sslenabled>
     <webjars-locator-core.version>0.59</webjars-locator-core.version>
     <webwolf.context>/WebWolf</webwolf.context>
     <webwolf.port>9090</webwolf.port>
-    <wiremock.version>3.13.0</wiremock.version>
+    <wiremock.version>3.13.1</wiremock.version>
     <xml-resolver.version>1.2</xml-resolver.version>
     <xstream.version>1.4.5</xstream.version>
     <!-- do not update necessary for lesson -->
     <zxcvbn.version>1.9.0</zxcvbn.version>
-
-    <!-- BUSL dependencies -->
-    <akka.version>2.10.2</akka.version>           <!-- Akka core BUSL-1.1 -->
-    <akka.http.version>10.7.1</akka.http.version> <!-- Akka HTTP BUSL-1.1 -->
-    <akka.scala.binary>2.13</akka.scala.binary>   <!-- Scala binary for Akka coords -->
-    <evitadb.version>2025.1.2</evitadb.version>   <!-- evitaDB server BUSL-1.1 -->
   </properties>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-core</artifactId>
-        <version>2.14.1</version>
-      </dependency>
-      <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-exec</artifactId>
-        <version>1.4.0</version>
+        <version>1.5.0</version>
       </dependency>
       <dependency>
         <groupId>org.asciidoctor</groupId>
@@ -167,7 +156,7 @@
       <dependency>
         <groupId>com.auth0</groupId>
         <artifactId>jwks-rsa</artifactId>
-        <version>0.22.1</version>
+        <version>0.23.0</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
       <dependency>
@@ -179,11 +168,6 @@
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>4.3.0.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>
@@ -238,28 +222,10 @@
       <dependency>
         <groupId>com.microsoft.playwright</groupId>
         <artifactId>playwright</artifactId>
-        <version>1.51.0</version>
-      </dependency>
-
-      <!-- BUSL-1.1 artifacts (versions managed here) -->
-      <dependency>
-        <groupId>com.typesafe.akka</groupId>
-        <artifactId>akka-actor-typed_${akka.scala.binary}</artifactId>
-        <version>${akka.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.typesafe.akka</groupId>
-        <artifactId>akka-http_${akka.scala.binary}</artifactId>
-        <version>${akka.http.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.evitadb</groupId>
-        <artifactId>evita_server</artifactId>
-        <version>${evitadb.version}</version>
+        <version>1.55.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -272,14 +238,9 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.38</version>
+      <version>1.18.42</version>
       <scope>provided</scope>
       <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>javax.xml.bind</groupId>
@@ -377,6 +338,10 @@
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
     </dependency>
     <dependency>
@@ -440,20 +405,6 @@
       <artifactId>spring-boot-properties-migrator</artifactId>
       <scope>runtime</scope>
     </dependency>
-
-    <!-- BUSL-1.1: add explicit usages so scanners pick them up -->
-    <dependency>
-      <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-actor-typed_${akka.scala.binary}</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.typesafe.akka</groupId>
-      <artifactId>akka-http_${akka.scala.binary}</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.evitadb</groupId>
-      <artifactId>evita_server</artifactId>
-    </dependency>
   </dependencies>
 
   <repositories>
@@ -464,21 +415,7 @@
       <id>central</id>
       <url>https://repo.maven.apache.org/maven2</url>
     </repository>
-
-    <!-- BUSL: Akka artifacts are hosted on the Akka repo -->
-    <repository>
-      <id>akka-repository</id>
-      <name>Akka Repository</name>
-      <url>https://repo.akka.io/maven</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
   </repositories>
-
   <pluginRepositories>
     <pluginRepository>
       <snapshots>
@@ -573,11 +510,12 @@
         <configuration>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
           <!-- Necessary for vulnerable components lesson -->
-          <argLine>--enable-native-access=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
-          --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
-          --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
-          --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED
-          --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED</argLine>
+          <argLine>--enable-native-access=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens
+                        java.base/java.io=ALL-UNNAMED
+                        --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
+                        --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+                        --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED
+                        --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED</argLine>
           <excludes>
             <exclude>**/*IntegrationTest.java</exclude>
             <exclude>**/*UITest.java</exclude>
@@ -669,7 +607,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.5.0</version>
+        <version>3.6.1</version>
         <executions>
           <execution>
             <id>restrict-log4j-versions</id>
@@ -693,6 +631,22 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <release>${maven.compiler.release}</release>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.42</version>
+            </path>
+          </annotationProcessorPaths>
+          <compilerArgs>
+            <arg>-parameters</arg>
+          </compilerArgs>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -834,11 +788,14 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <argLine>--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
-          --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
-          --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
-          --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED
-          ${surefire.jacoco.args}</argLine>
+              <argLine>--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens
+                                java.base/java.io=ALL-UNNAMED
+                                --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
+                                --add-opens java.base/java.util=ALL-UNNAMED --add-opens
+                                java.base/java.lang.reflect=ALL-UNNAMED
+                                --add-opens java.base/java.text=ALL-UNNAMED --add-opens
+                                java.desktop/java.awt.font=ALL-UNNAMED
+                                ${surefire.jacoco.args}</argLine>
               <excludes>
                 <exclude>**/*IntegrationTest.java</exclude>
                 <exclude>src/it/java</exclude>
