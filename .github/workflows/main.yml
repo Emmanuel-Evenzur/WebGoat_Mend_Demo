@@ -12,7 +12,7 @@ jobs:
     steps:
       # 1) Checkout source
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # 2) Set up Java (LTS version 21 – stable on GitHub runners)
       - name: Set up JDK 21
