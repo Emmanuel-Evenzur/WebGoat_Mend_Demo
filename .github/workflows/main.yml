@@ -72,7 +72,7 @@ jobs:
 
       # 6) Upload SCA report artifact
       - name: Upload SCA Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: sca-scan-report
           path: sca-report.json
