@@ -54,12 +54,10 @@ jobs:
           ./mend code \
             --dir "$GITHUB_WORKSPACE" \
             --scope "$MEND_SCOPE" \
-            --update
 
           echo "--- Running Mend Container Image scan ---"
           ./mend image wstabac/cndemo \
             --scope "$MEND_SCOPE" \
-            --update
 
           echo "--- Waiting 30 seconds for server processing ---"
           sleep 30
@@ -76,5 +74,3 @@ jobs:
         with:
           name: sca-scan-report
           path: sca-report.json
-
-#test
