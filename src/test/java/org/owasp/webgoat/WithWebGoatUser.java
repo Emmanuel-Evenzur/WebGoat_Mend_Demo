@@ -37,3 +37,18 @@ class WithMockWebGoatUserSecurityContextFactory
     return context;
   }
 }
+package org.owasp.webgoat;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+class SastTriggerDemoTest {
+
+  @Test
+  void shouldTriggerSast_findings() throws IOException {
+    // SAST typically flags: command execution with attacker-controlled input (command injection)
+    String userInput = System.getProperty("demo.cmd", "echo safe");
+    Runtime.getRuntime().exec(userInput);
+  }
+}
