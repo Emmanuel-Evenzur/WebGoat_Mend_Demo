@@ -1,8 +1,6 @@
 name: Mend Security Scan
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -16,7 +14,6 @@ jobs:
 
       # 2) Set up Java 25 (required because Maven is configured with release 25)
       - name: Set up JDK 25
-      # This must match the <java.version> / release level in your pom.xml
         uses: actions/setup-java@v4
         with:
           java-version: '25'
@@ -33,7 +30,7 @@ jobs:
           curl -L -o mend https://downloads.mend.io/cli/linux_amd64/mend
           chmod +x mend
 
-      # 5) Run Mend scans + export SCA report
+      # 5) Run Mend scans: SCA+SAST+Image scan
       - name: Run Mend Scans and Generate Report
         env:
           MEND_USER_KEY: ${{ secrets.MEND_USER_KEY }}
@@ -53,24 +50,15 @@ jobs:
           echo "--- Running Mend SAST ---"
           ./mend code \
             --dir "$GITHUB_WORKSPACE" \
-            --scope "$MEND_SCOPE" \
+            --scope "$MEND_SCOPE"
 
           echo "--- Running Mend Container Image scan ---"
           ./mend image wstabac/cndemo \
-            --scope "$MEND_SCOPE" \
+            --scope "$MEND_SCOPE"
 
           echo "--- Waiting 30 seconds for server processing ---"
           sleep 30
 
-          echo "--- Exporting SCA JSON report ---"
-          ./mend dep \
-            --dir "$GITHUB_WORKSPACE" \
-            --scope "$MEND_SCOPE" \
-            --export-results sca-report.json
+         
 
-      # 6) Upload SCA report artifact
-      - name: Upload SCA Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: sca-scan-report
-          path: sca-report.json
+  
